@@ -24,7 +24,7 @@
         <icon height="144" src="/favicon.ico" width="144" />
         <icon height="72" src="/favicon.ico" width="72" />
     </platform>
-    <preference name="Fullscreen" value="false" />
+    <preference name="Fullscreen" value="true" />
     <allow-navigation hap-rule="yes" href="https://montclair.line72.net/*" />
     <platform name="windows">
     </platform>
