@@ -1,7 +1,7 @@
 {
-    "short_name": "Montclair",
-    "name": "Montclair",
-    "description": "Montclair Bus Tracker for Birmingham, AL",
+    "short_name": "Birmingham Transit",
+    "name": "Birmingham Transit",
+    "description": "Real Time Bus Tracking for Birmingham, AL",
     "icons": [
         {
             "src": "https://montclair.line72.net/favicon.ico",
@@ -17,6 +17,20 @@
     "start_url": "https://montclair.line72.net/index.html",
     "display": "standalone",
     "theme_color": "#000000",
-    "background_color": "transparent",
-    "lang": ""
+    "background_color": "#ffffff",
+    "prefer_related_applications": true,
+    "related_applications": [
+        {
+            "platform": "play",
+            "url": "https://play.google.com/store/apps/details?id=net.line72.montclair",
+            "id": "net.line72.montclair"
+        },
+        {
+            "platform": "itunes",
+            "url": "https://itunes.apple.com/us/app/montclair/id1418953482"
+        }
+    ],
+    "lang": "",
+    "screenshots": [],
+    "orientation": "portrait"
 }
