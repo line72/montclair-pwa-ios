@@ -32,12 +32,10 @@ then
     exit 1
 fi
 
-echo $(echo "$ENC_PASSWORD" | base64 -d -)
-
 # Decrypt all the profiles
 for i in $D/profiles/*.enc
 do
-    openssl aes-256-cbc -k "$(echo "$ENC_PASSWORD" | base64 -d -)" -in $i -d -a -out ${i%.enc}
+    openssl aes-256-cbc -k $(echo "$ENC_PASSWORD" | base64 -d -) -in $i -d -a -out ${i%.enc}
 done
 
 # Create a new keychain, set it as the default, and install the profiles
@@ -51,11 +49,11 @@ security set-keychain-settings -t 3600 -l ~/Library/Keychains/ios-build.keychain
 
 security import $D/profiles/AppleWWDRCA.cer -k ios-build.keychain -A
 security import $D/profiles/development-cert.cer -k ios-build.keychain -A
-security import $D/profiles/development-key.p12 -k ios-build.keychain -P "$(echo "$PROFILE_PASSWORD" | base64 -d -)" -A
+security import $D/profiles/development-key.p12 -k ios-build.keychain -P $(echo "$PROFILE_PASSWORD" | base64 -d -) -A
 security import $D/profiles/distribution-cert.cer -k ios-build.keychain -A
-security import $D/profiles/distribution-key.p12 -k ios-build.keychain -P "$(echo "$PROFILE_PASSWORD" | base64 -d -)" -A
+security import $D/profiles/distribution-key.p12 -k ios-build.keychain -P $(echo "$PROFILE_PASSWORD" | base64 -d -) -A
 # Fix for OS X Sierra that hungs in the codesign step
-security set-key-partition-list -S apple-tool:,apple: -s -k "$(echo "$PROFILE_PASSWORD" | base64 -d -)" ios-build.keychain > /dev/null
+security set-key-partition-list -S apple-tool:,apple: -s -k $(echo "$PROFILE_PASSWORD" | base64 -d -) ios-build.keychain > /dev/null
 
 # Install provisioning profiles
 mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
