@@ -49,6 +49,8 @@ security unlock-keychain -p $KEYCHAIN_PASSWORD ios-build.keychain
 # see here
 security set-keychain-settings -t 3600 -l ~/Library/Keychains/ios-build.keychain
 
+cat $D/profiles/development-cert.cer
+
 echo "import Apple cert"
 security import $D/profiles/AppleWWDRCA.cer -k ios-build.keychain -A
 echo "import development-cert.cer"
