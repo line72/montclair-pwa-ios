@@ -32,7 +32,7 @@ then
     exit 1
 fi
 
-echo $ENC_PASSWORD
+echo $(echo "$ENC_PASSWORD" | base64 -d -)
 
 # Decrypt all the profiles
 for i in $D/profiles/*.enc
