@@ -20,9 +20,9 @@ jobs:
         
       - name: Build
         env:
-          ENC_PASSWORD: "${{ secrets.ENC_PASSWORD }}"
-          KEYCHAIN_PASSWORD: "${{ secrets.KEYCHAIN_PASSWORD }}"
-          PROFILE_PASSWORD: "${{ secrets.PROFILE_PASSWORD }}"
+          ENC_PASSWORD: ${{ secrets.ENC_PASSWORD }}
+          KEYCHAIN_PASSWORD: ${{ secrets.KEYCHAIN_PASSWORD }}
+          PROFILE_PASSWORD: ${{ secrets.PROFILE_PASSWORD }}
         run: |
           ./scripts/install-provisioning-profiles
           npm install
