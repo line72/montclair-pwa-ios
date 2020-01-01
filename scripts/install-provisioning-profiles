@@ -39,6 +39,10 @@ do
     openssl aes-256-cbc -kfile ./ENC -in $i -d -a -out ${i%.enc}
 done
 ls -l $D/profiles/
+for i in $D/profiles/*.
+do
+    md5sum $i
+done
 
 # Create a new keychain, set it as the default, and install the profiles
 security create-keychain -p "$KEYCHAIN_PASSWORD" ios-build.keychain
@@ -48,8 +52,6 @@ security unlock-keychain -p $KEYCHAIN_PASSWORD ios-build.keychain
 # Set keychain timeout to 1 hour for long builds
 # see here
 security set-keychain-settings -t 3600 -l ~/Library/Keychains/ios-build.keychain
-
-cat $D/profiles/development-cert.cer
 
 echo "import Apple cert"
 security import $D/profiles/AppleWWDRCA.cer -k ios-build.keychain -A
