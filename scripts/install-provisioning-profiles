@@ -13,7 +13,6 @@
 # - PROFILE_PASSWORD: The base64 password used when the profiles were exported
 #
 
-
 D=$(dirname $0)
 
 if [ -z $ENC_PASSWORD ]
@@ -50,15 +49,22 @@ security unlock-keychain -p $KEYCHAIN_PASSWORD ios-build.keychain
 # see here
 security set-keychain-settings -t 3600 -l ~/Library/Keychains/ios-build.keychain
 
+echo "import Apple cert"
 security import $D/profiles/AppleWWDRCA.cer -k ios-build.keychain -A
+echo "import development-cert.cer"
 security import $D/profiles/development-cert.cer -k ios-build.keychain -A
-security import $D/profiles/development-key.p12 -k ios-build.keychain -P $(echo "$PROFILE_PASSWORD" | base64 -d -) -A
+echo "import development-key.p12"
+security import $D/profiles/development-key.p12 -k ios-build.keychain -P "$(echo "$PROFILE_PASSWORD" | base64 -d -)" -A
+echo "import distribution-cert.cer"
 security import $D/profiles/distribution-cert.cer -k ios-build.keychain -A
-security import $D/profiles/distribution-key.p12 -k ios-build.keychain -P $(echo "$PROFILE_PASSWORD" | base64 -d -) -A
+echo "import distribution-key.p12"
+security import $D/profiles/distribution-key.p12 -k ios-build.keychain -P "$(echo "$PROFILE_PASSWORD" | base64 -d -)" -A
 # Fix for OS X Sierra that hungs in the codesign step
+echo "fix codesign"
 security set-key-partition-list -S apple-tool:,apple: -s -k $(echo "$PROFILE_PASSWORD" | base64 -d -) ios-build.keychain > /dev/null
 
 # Install provisioning profiles
 mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
 cp $D/profiles/development-provisioning-profile.mobileprovision ~/Library/MobileDevice/Provisioning\ Profiles/
 cp $D/profiles/distribution-provisioning-profile.mobileprovision ~/Library/MobileDevice/Provisioning\ Profiles/
+echo "copied provisioning profiles"
