@@ -61,7 +61,7 @@ echo "import distribution-key.p12"
 security import $D/profiles/distribution-key.p12 -k ios-build.keychain -P "$(echo "$PROFILE_PASSWORD" | base64 -d -)" -A
 # Fix for OS X Sierra that hungs in the codesign step
 echo "fix codesign"
-security set-key-partition-list -S apple-tool:,apple: -s -k "$(echo "$PROFILE_PASSWORD" | base64 -d -)" ios-build.keychain > /dev/null
+security set-key-partition-list -S apple-tool:,apple: -s -k "$(echo "$KEYCHAIN_PASSWORD" | base64 -d -)" ios-build.keychain > /dev/null
 
 # Install provisioning profiles
 mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
