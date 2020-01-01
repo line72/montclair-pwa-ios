@@ -20,6 +20,7 @@ jobs:
         
       - name: Build
         run: |
+          ./scripts/install-provisioning-profiles
           npm install
           xcodebuild -scheme Montclair -workspace platforms/ios/Montclair.xcworkspace -allowProvisioningUpdates -destination generic/platform=iOS build
           xcodebuild -scheme Montclair -workspace platforms/ios/Montclair.xcworkspace -allowProvisioningUpdates -sdk iphoneos -configuration AppStoreDistribution archive -archivePath $PWD/build/Montclair.xcarchive
