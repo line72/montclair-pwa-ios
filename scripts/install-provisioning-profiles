@@ -32,11 +32,14 @@ then
     exit 1
 fi
 
+echo "$ENC_PASSWORD" | base64 -d - > ENC
+
 # Decrypt all the profiles
 for i in $D/profiles/*.enc
 do
-    openssl aes-256-cbc -k $(echo "$ENC_PASSWORD" | base64 -d -) -in $i -d -a -out ${i%.enc}
+    openssl aes-256-cbc -K ./ENC -in $i -d -a -out ${i%.enc}
 done
+ls -l $D/profiles/
 
 # Create a new keychain, set it as the default, and install the profiles
 security create-keychain -p "$KEYCHAIN_PASSWORD" ios-build.keychain
