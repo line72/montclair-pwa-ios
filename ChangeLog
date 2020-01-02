@@ -1,3 +1,6 @@
+2020-01-02  Marcus Dillavou  <line72@line72.net>
+	* Only ignore top-level node_modules
+
 2.0.2 (3)
 ==========
 2020-01-01  Marcus Dillavou  <line72@line72.net>
