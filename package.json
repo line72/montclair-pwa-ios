@@ -19,7 +19,8 @@
         "plugins": {
             "cordova-plugin-hostedwebapp": {},
             "cordova-plugin-whitelist": {},
-            "cordova-plugin-wkwebview-engine": {}
+            "cordova-plugin-wkwebview-engine": {},
+            "cordova-plugin-geolocation": {}
         },
         "platforms": [
             "ios"

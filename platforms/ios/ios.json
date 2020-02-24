@@ -15,6 +15,10 @@
             {
               "xml": "<preference name=\"CordovaWebViewEngine\" value=\"CDVWKWebViewEngine\" />",
               "count": 1
+            },
+            {
+              "xml": "<feature name=\"Geolocation\"><param name=\"ios-package\" value=\"CDVLocation\" /></feature>",
+              "count": 1
             }
           ]
         }
@@ -26,6 +30,9 @@
       "PACKAGE_NAME": "net.line72.montclair"
     },
     "cordova-plugin-wkwebview-engine": {
+      "PACKAGE_NAME": "net.line72.montclair"
+    },
+    "cordova-plugin-geolocation": {
       "PACKAGE_NAME": "net.line72.montclair"
     }
   },
@@ -46,10 +53,43 @@
       "clobbers": [
         "window.WkWebView"
       ]
+    },
+    {
+      "id": "cordova-plugin-geolocation.Coordinates",
+      "file": "plugins/cordova-plugin-geolocation/www/Coordinates.js",
+      "pluginId": "cordova-plugin-geolocation",
+      "clobbers": [
+        "Coordinates"
+      ]
+    },
+    {
+      "id": "cordova-plugin-geolocation.PositionError",
+      "file": "plugins/cordova-plugin-geolocation/www/PositionError.js",
+      "pluginId": "cordova-plugin-geolocation",
+      "clobbers": [
+        "PositionError"
+      ]
+    },
+    {
+      "id": "cordova-plugin-geolocation.Position",
+      "file": "plugins/cordova-plugin-geolocation/www/Position.js",
+      "pluginId": "cordova-plugin-geolocation",
+      "clobbers": [
+        "Position"
+      ]
+    },
+    {
+      "id": "cordova-plugin-geolocation.geolocation",
+      "file": "plugins/cordova-plugin-geolocation/www/geolocation.js",
+      "pluginId": "cordova-plugin-geolocation",
+      "clobbers": [
+        "navigator.geolocation"
+      ]
     }
   ],
   "plugin_metadata": {
     "cordova-plugin-whitelist": "1.3.4",
-    "cordova-plugin-wkwebview-engine": "1.2.1"
+    "cordova-plugin-wkwebview-engine": "1.2.1",
+    "cordova-plugin-geolocation": "4.0.2"
   }
 }

@@ -12,6 +12,9 @@
     },
     "cordova-plugin-wkwebview-engine": {
       "PACKAGE_NAME": "net.line72.montclair"
+    },
+    "cordova-plugin-geolocation": {
+      "PACKAGE_NAME": "net.line72.montclair"
     }
   },
   "dependent_plugins": {}
